@@ -14,6 +14,10 @@ def posts():
     sorted_pages=sorted(posts, reverse=True, key=lambda page: datetime.strptime(page.meta["date"], "%d %b %y"))
     return render_template('bloghome.html', pages=sorted_pages)
 
+@app.route('/about')
+def about():
+    return('about me')
+
 
 @app.route('/<path:path>.html')
 def page(path):
