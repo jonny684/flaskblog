@@ -14,15 +14,20 @@ def posts():
     sorted_pages=sorted(posts, reverse=True, key=lambda page: datetime.strptime(page.meta["date"], "%d %b %y"))
     return render_template('bloghome.html', pages=sorted_pages)
 
-@app.route('/about')
-def about():
-    return('about me')
-
-
 @app.route('/<path:path>.html')
 def page(path):
+    print(path)
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
+
+
+@app.route('/about')
+def aboutme():
+    path ='about'
+    print(path)
+    page = pages.get_or_404(path)
+    return render_template('about.html', page=page)
+
 
 
 if __name__ == "__main__":
